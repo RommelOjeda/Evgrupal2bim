@@ -1,0 +1,68 @@
+final String tableContactos = 'user';
+
+class ContactoFields {
+  static final List<String> values = [
+    /// Add all fields
+    id, nombre,apellido, parentesco,correo,celular
+  ];
+
+  static final String id = '_id';
+  static final String nombre = 'nombre';
+  static final String apellido = 'apellido';
+  static final String parentesco = 'parentesco';
+  static final String correo = 'correo';
+  static final String celular = 'celular';
+}
+
+class contacto {
+  final int? id;
+  final String nombre;
+  final String apellido;
+  final String parentesco;
+  final String correo;
+  final int celular;
+
+  const contacto({
+    this.id,
+    required this.nombre,
+    required this.apellido,
+    required this.parentesco,
+    required this.correo,
+    required this.celular,
+  });
+
+  contacto copy({
+    int? id,
+    String? nombre,
+    String? apellido,
+    String? parentesco,
+    String? correo,
+    int? celular,
+  }) =>
+      contacto(
+        id: id ?? this.id,
+        nombre: nombre ?? this.nombre,
+        apellido: apellido ?? this.apellido,
+        parentesco: parentesco ?? this.parentesco,
+        correo: correo ?? this.correo,
+        celular: celular ?? this.celular,
+      );
+
+  static contacto fromJson(Map<String, Object?> json) => contacto(
+        id: json[ContactoFields.id] as int?,
+        nombre: json[ContactoFields.nombre] as String,
+        apellido: json[ContactoFields.apellido] as String,
+        parentesco: json[ContactoFields.parentesco] as String,
+        correo: json[ContactoFields.correo] as String,
+        celular: json[ContactoFields.celular] as int,
+      );
+
+  Map<String, Object?> toJson() => {
+        ContactoFields.id: id,
+        ContactoFields.apellido: apellido,
+        ContactoFields.celular:celular,
+        ContactoFields.nombre: nombre,
+        ContactoFields.parentesco: parentesco,
+        ContactoFields.correo: correo,
+      };
+}
