@@ -1,6 +1,7 @@
+import 'package:contactos/model/Contacto.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:contactos/model/note.dart';
+import 'package:contactos/model/Contacto.dart';
 
 final _lightColors = [
   Colors.amber.shade300,
@@ -18,14 +19,14 @@ class NoteCardWidget extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final Note note;
+  final contacto note;
   final int index;
 
   @override
   Widget build(BuildContext context) {
     /// Pick colors from the accent colors based on index
     final color = _lightColors[index % _lightColors.length];
-    final time = DateFormat.yMMMd().format(note.createdTime);
+
     final minHeight = getMinHeight(index);
 
     return Card(
@@ -37,13 +38,9 @@ class NoteCardWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              time,
-              style: TextStyle(color: Colors.grey.shade700),
-            ),
             SizedBox(height: 4),
             Text(
-              note.title,
+              note.nombre,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
