@@ -20,7 +20,7 @@ class contacto {
   final String apellido;
   final String parentesco;
   final String correo;
-  final int celular;
+  final String celular;
 
   const contacto({
     this.id,
@@ -37,7 +37,7 @@ class contacto {
     String? apellido,
     String? parentesco,
     String? correo,
-    int? celular,
+    String? celular,
   }) =>
       contacto(
         id: id ?? this.id,
@@ -54,7 +54,7 @@ class contacto {
         apellido: json[ContactoFields.apellido] as String,
         parentesco: json[ContactoFields.parentesco] as String,
         correo: json[ContactoFields.correo] as String,
-        celular: json[ContactoFields.celular] as int,
+        celular: json[ContactoFields.celular] as String,
       );
 
   Map<String, Object?> toJson() => {
