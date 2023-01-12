@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:contactos/db/notes_database.dart';
 import 'package:contactos/model/Contacto.dart';
 import 'package:contactos/widget/note_card_widget.dart';
-import 'package:contactos/screens/note_detail_screen.dart';
+import 'package:contactos/screens/edit_note_screen.dart';
 
 
 class NotesPage extends StatefulWidget {
@@ -55,7 +55,18 @@ class _NotesPageState extends State<NotesPage> {
         style: TextStyle(color: Colors.white, fontSize: 24),
       )
           : buildNotes(),
-    )
+    ),
+    floatingActionButton: FloatingActionButton(
+      backgroundColor: Colors.black,
+      child: Icon(Icons.add),
+      onPressed: () async {
+        await Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => AddEditNotePage()),
+        );
+
+        refreshNotes();
+      },
+    ),
   );
 
   //Widget editButton() => IconButton(

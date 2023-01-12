@@ -3,10 +3,12 @@ final String tableContactos = 'user';
 class ContactoFields {
   static final List<String> values = [
     /// Add all fields
-    id, nombre,apellido, parentesco,correo,celular
+    id, isImportant, number,nombre,apellido, parentesco,correo,celular
   ];
 
   static final String id = '_id';
+  static final String isImportant = 'isImportant';
+  static final String number = 'number';
   static final String nombre = 'nombre';
   static final String apellido = 'apellido';
   static final String parentesco = 'parentesco';
@@ -16,6 +18,7 @@ class ContactoFields {
 
 class contacto {
   final int? id;
+  final bool isImportant;
   final String nombre;
   final String apellido;
   final String parentesco;
@@ -24,6 +27,7 @@ class contacto {
 
   const contacto({
     this.id,
+    required this.isImportant,
     required this.nombre,
     required this.apellido,
     required this.parentesco,
@@ -31,8 +35,12 @@ class contacto {
     required this.celular,
   });
 
+
+
   contacto copy({
     int? id,
+    bool? isImportant,
+    int? number,
     String? nombre,
     String? apellido,
     String? parentesco,
@@ -41,6 +49,7 @@ class contacto {
   }) =>
       contacto(
         id: id ?? this.id,
+        isImportant: isImportant ?? this.isImportant,
         nombre: nombre ?? this.nombre,
         apellido: apellido ?? this.apellido,
         parentesco: parentesco ?? this.parentesco,
@@ -50,6 +59,7 @@ class contacto {
 
   static contacto fromJson(Map<String, Object?> json) => contacto(
         id: json[ContactoFields.id] as int?,
+         isImportant: json[ContactoFields.isImportant] == 1,
         nombre: json[ContactoFields.nombre] as String,
         apellido: json[ContactoFields.apellido] as String,
         parentesco: json[ContactoFields.parentesco] as String,
@@ -59,6 +69,7 @@ class contacto {
 
   Map<String, Object?> toJson() => {
         ContactoFields.id: id,
+        ContactoFields.isImportant: isImportant ? 1 : 0,
         ContactoFields.apellido: apellido,
         ContactoFields.celular:celular,
         ContactoFields.nombre: nombre,

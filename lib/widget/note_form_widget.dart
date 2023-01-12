@@ -5,7 +5,6 @@ class NoteFormWidget extends StatelessWidget {
   final int? number;
   final String? name;
   final String? last;
-  final String? description;
   final String? relation;
   final String? mail;
   final String? cel;
@@ -14,7 +13,6 @@ class NoteFormWidget extends StatelessWidget {
   final ValueChanged<int> onChangedNumber;
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedLast;
-  final ValueChanged<String> onChangedDescription;
   final ValueChanged<String> onChangedRelation;
   final ValueChanged<String> onChangedMail;
   final ValueChanged<String> onChangedCel;
@@ -26,7 +24,6 @@ class NoteFormWidget extends StatelessWidget {
     this.number = 0,
     this.name = '',
     this.last = '',
-    this.description= '',
     this.relation= '',
     this.mail= '',
     this.cel= '',
@@ -35,7 +32,6 @@ class NoteFormWidget extends StatelessWidget {
     required this.onChangedNumber,
     required this.onChangedName,
     required this.onChangedLast,
-    required this.onChangedDescription,
     required this.onChangedRelation,
     required this.onChangedMail,
     required this.onChangedCel,

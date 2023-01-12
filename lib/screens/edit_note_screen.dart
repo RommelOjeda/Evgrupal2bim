@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nuevo/db/notes_database.dart';
-import 'package:nuevo/model/note.dart';
-import 'package:nuevo/widget/note_form_widget.dart';
+import 'package:contactos/db/notes_database.dart';
+import 'package:contactos/model/Contacto.dart';
+import 'package:contactos/widget/note_form_widget.dart';
 
 class AddEditNotePage extends StatefulWidget {
-  final Note? note;
+  final contacto? note;
 
   const AddEditNotePage({
     Key? key,
@@ -16,21 +16,23 @@ class AddEditNotePage extends StatefulWidget {
 
 class _AddEditNotePageState extends State<AddEditNotePage> {
   final _formKey = GlobalKey<FormState>();
-  late bool isImportant;
-  late int number;
-  late String title;
-  late String description;
-  late String categoria;
+  late bool? isImportant;
+  late int? number;
+  late String? name;
+  late String? last;
+  late String? relation;
+  late String? mail;
+  late String? cel;
 
   @override
   void initState() {
     super.initState();
-
     isImportant = widget.note?.isImportant ?? false;
-    number = widget.note?.number ?? 0;
-    title = widget.note?.title ?? '';
-    description = widget.note?.description ?? '';
-    categoria =widget.note?.categoria ?? '';
+    name = widget.note?.nombre ?? '';
+    last = widget.note?.apellido ?? '';
+    relation =widget.note?.parentesco ?? '';
+    mail =widget.note?.correo ?? '';
+    cel =widget.note?.celular ?? '';
   }
 
   @override
@@ -43,22 +45,26 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
       child: NoteFormWidget(
         isImportant: isImportant,
         number: number,
-        title: title,
-        description: description,
-        categoria: categoria,
+        name: name,
+        last: last,
+        relation: relation,
+        mail: mail,
+        cel: cel,
         onChangedImportant: (isImportant) =>
             setState(() => this.isImportant = isImportant),
         onChangedNumber: (number) => setState(() => this.number = number),
-        onChangedTitle: (title) => setState(() => this.title = title),
-        onChangedcategoria: (categoria) => setState(() => this.categoria = categoria),
-        onChangedDescription: (description) =>
-            setState(() => this.description = description),
+        onChangedName: (name) => setState(() => this.name = name),
+        onChangedLast: (last) => setState(() => this.last = last),
+        onChangedRelation: (description) =>
+            setState(() => this.relation = relation),
+        onChangedMail: (mail) => setState(() => this.mail = mail),
+        onChangedCel: (cel) => setState(() => this.cel = cel),
       ),
     ),
   );
 
   Widget buildButton() {
-    final isFormValid = title.isNotEmpty && description.isNotEmpty;
+    final isFormValid = name!.isNotEmpty;
 
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -93,24 +99,26 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
     final note = widget.note!.copy(
       isImportant: isImportant,
       number: number,
-      title: title,
-      categorias: categoria,
-      description: description,
+      nombre: name,
+      apellido: last,
+      parentesco: relation,
+      correo: mail,
+      celular: cel,
     );
 
-    await NotesDatabase.instance.update(note);
+    await ContactosDatabase.instance.update(note);
   }
 
   Future addNote() async {
-    final note = Note(
-      title: title,
+    final note = contacto(
       isImportant: true,
-      number: number,
-      description: description,
-      createdTime: DateTime.now(),
-      categoria: categoria,
+      nombre: ContactoFields.nombre,
+      apellido: ContactoFields.apellido,
+      parentesco: ContactoFields.parentesco,
+      correo: ContactoFields.correo,
+      celular: ContactoFields.celular,
     );
 
-    await NotesDatabase.instance.create(note);
+    await ContactosDatabase.instance.create(note);
   }
 }
