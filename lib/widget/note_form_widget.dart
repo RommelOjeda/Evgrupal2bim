@@ -91,8 +91,8 @@ class NoteFormWidget extends StatelessWidget {
       hintText: 'Nombre',
       hintStyle: TextStyle(color: Colors.white70),
     ),
-    validator: (title) =>
-    title != null && title.isEmpty ? 'El Nombre no debe estar vacio' : null,
+    validator: (name) =>
+    name != null && name.isEmpty ? 'El Nombre no debe estar vacio' : null,
     onChanged: onChangedName,
   );
 
@@ -109,8 +109,8 @@ class NoteFormWidget extends StatelessWidget {
       hintText: 'Apellido',
       hintStyle: TextStyle(color: Colors.white70),
     ),
-    validator: (categoria) =>
-    categoria != null && categoria.isEmpty ? 'Apellido' : null,
+    validator: (last) =>
+    last != null && last.isEmpty ? 'Apellido' : null,
     onChanged: onChangedLast,
   );
 
@@ -127,8 +127,8 @@ class NoteFormWidget extends StatelessWidget {
       hintText: 'Parentesco',
       hintStyle: TextStyle(color: Colors.white70),
     ),
-    validator: (categoria) =>
-    categoria != null && categoria.isEmpty ? 'Parentesco' : null,
+    validator: (relation) =>
+    relation != null && relation.isEmpty ? 'Parentesco' : null,
     onChanged: onChangedRelation,
   );
 
@@ -145,8 +145,8 @@ class NoteFormWidget extends StatelessWidget {
       hintText: 'Correo',
       hintStyle: TextStyle(color: Colors.white70),
     ),
-    validator: (categoria) =>
-    categoria != null && categoria.isEmpty ? 'Correo' : null,
+    validator: (mail) =>
+    mail != null && mail.isEmpty ? 'Correo' : null,
     onChanged: onChangedMail,
   );
 
@@ -163,8 +163,8 @@ class NoteFormWidget extends StatelessWidget {
       hintText: 'Celular',
       hintStyle: TextStyle(color: Colors.white70),
     ),
-    validator: (categoria) =>
-    categoria != null && categoria.isEmpty ? 'Celular' : null,
+    validator: (cel) =>
+    cel != null && cel.isEmpty ? 'Celular' : null,
     onChanged: onChangedCel,
   );
 
