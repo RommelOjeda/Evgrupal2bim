@@ -17,7 +17,6 @@ class AddEditNotePage extends StatefulWidget {
 class _AddEditNotePageState extends State<AddEditNotePage> {
   final _formKey = GlobalKey<FormState>();
   late bool? isImportant;
-  late int? number;
   late String? name;
   late String? last;
   late String? relation;
@@ -44,7 +43,6 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
       key: _formKey,
       child: NoteFormWidget(
         isImportant: isImportant,
-        number: number,
         name: name,
         last: last,
         relation: relation,
@@ -52,7 +50,6 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
         cel: cel,
         onChangedImportant: (isImportant) =>
             setState(() => this.isImportant = isImportant),
-        onChangedNumber: (number) => setState(() => this.number = number),
         onChangedName: (name) => setState(() => this.name = name),
         onChangedLast: (last) => setState(() => this.last = last),
         onChangedRelation: (description) =>
@@ -98,7 +95,6 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
   Future updateNote() async {
     final note = widget.note!.copy(
       isImportant: isImportant,
-      number: number,
       nombre: name,
       apellido: last,
       parentesco: relation,

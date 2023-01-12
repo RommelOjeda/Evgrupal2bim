@@ -3,12 +3,11 @@ final String tableContactos = 'user';
 class ContactoFields {
   static final List<String> values = [
     /// Add all fields
-    id, isImportant, number,nombre,apellido, parentesco,correo,celular
+    id, isImportant,nombre,apellido, parentesco,correo,celular
   ];
 
   static final String id = '_id';
   static final String isImportant = 'isImportant';
-  static final String number = 'number';
   static final String nombre = 'nombre';
   static final String apellido = 'apellido';
   static final String parentesco = 'parentesco';
@@ -40,7 +39,6 @@ class contacto {
   contacto copy({
     int? id,
     bool? isImportant,
-    int? number,
     String? nombre,
     String? apellido,
     String? parentesco,

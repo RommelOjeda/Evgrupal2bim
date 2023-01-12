@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class NoteFormWidget extends StatelessWidget {
   final bool? isImportant;
-  final int? number;
   final String? name;
   final String? last;
   final String? relation;
@@ -10,7 +9,6 @@ class NoteFormWidget extends StatelessWidget {
   final String? cel;
 
   final ValueChanged<bool> onChangedImportant;
-  final ValueChanged<int> onChangedNumber;
   final ValueChanged<String> onChangedName;
   final ValueChanged<String> onChangedLast;
   final ValueChanged<String> onChangedRelation;
@@ -21,7 +19,6 @@ class NoteFormWidget extends StatelessWidget {
   const NoteFormWidget({
     Key? key,
     this.isImportant = false,
-    this.number = 0,
     this.name = '',
     this.last = '',
     this.relation= '',
@@ -29,7 +26,6 @@ class NoteFormWidget extends StatelessWidget {
     this.cel= '',
 
     required this.onChangedImportant,
-    required this.onChangedNumber,
     required this.onChangedName,
     required this.onChangedLast,
     required this.onChangedRelation,
@@ -51,6 +47,7 @@ class NoteFormWidget extends StatelessWidget {
                 value: isImportant ?? false,
                 onChanged: onChangedImportant,
               ),
+              /*
               Expanded(
                 child: Slider(
                   value: (number ?? 0).toDouble(),
@@ -60,6 +57,8 @@ class NoteFormWidget extends StatelessWidget {
                   onChanged: (number) => onChangedNumber(number.toInt()),
                 ),
               )
+
+               */
             ],
           ),
           buildNombre(),
